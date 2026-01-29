@@ -9,11 +9,14 @@ spec:
     repoURL: https://github.com/zachbugay/argcd-declarative-app-repo.git
     targetRevision: HEAD
     path: apps
+    directory:
+      recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
-      - Prune=true
-      - SelfHeal=true
+      - ApplyOutOfSyncOnly=true

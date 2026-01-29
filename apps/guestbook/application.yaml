@@ -9,11 +9,14 @@ spec:
   project: default
   source:
     repoURL: https://github.com/zachbugay/argocd-example-apps.git
-    targetRevision: v1.0.1
+    targetRevision: v1.0.0
     path: guestbook
   destination:
     server: https://kubernetes.default.svc
     namespace: guestbook
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
